@@ -222,3 +222,140 @@ body {
   .page { padding: 0; }
   .card { width: 1024px; box-shadow: none; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background:#eee; }
+
+.page{
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* Card stays responsive */
+.card{
+  width: min(1024px, 100vw - 32px);
+  aspect-ratio: 2/3;      /* 1024x1536 */
+  position: relative;
+  overflow: hidden;
+  background:#fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+
+.bg{
+  position:absolute;
+  inset:0;
+  background:url("invite-bg.jpg") center/cover no-repeat;
+}
+
+/* --- THE FIX: scale overlay exactly with card width --- */
+.overlay-scale{
+  position:absolute;
+  inset:0;
+}
+
+.overlay{
+  width: 1024px;
+  height: 1536px;
+  position:absolute;
+  left:0;
+  top:0;
+
+  /* Scale based on the card width */
+  transform-origin: top left;
+  transform: scale(calc(100% / 1024));
+  /* NOTE: supported by modern browsers */
+}
+
+/* Typography (in px, because we are scaling the whole overlay) */
+.overlay { color:#3b3b3b; text-align:center; font-family: "Georgia", serif; }
+.t1{ font: 400 20px/1.4 Arial, sans-serif; letter-spacing: 2px; }
+.t2{ font: 400 16px/1.6 Georgia, serif; letter-spacing: .5px; }
+.t3{ font: 400 14px/1.7 Georgia, serif; letter-spacing: 1px; }
+
+/* Absolute positions in the ORIGINAL coordinate system (1024x1536) */
+.top-hosts{ position:absolute; top: 330px; left: 120px; right: 120px; }
+.invite-text{ position:absolute; top: 460px; left: 150px; right: 150px; }
+
+.groom{
+  position:absolute; top: 545px; left: 120px; right: 120px;
+  font: 500 62px/1.2 "Brush Script MT", "Segoe Script", cursive;
+  color:#a06a45;
+}
+.with{
+  position:absolute; top: 640px; left: 120px; right: 120px;
+  font: italic 26px/1.2 Georgia, serif;
+}
+.bride{
+  position:absolute; top: 695px; left: 120px; right: 120px;
+  font: 500 70px/1.2 "Brush Script MT", "Segoe Script", cursive;
+  color:#a06a45;
+}
+
+.bride-family{ position:absolute; top: 830px; left: 150px; right: 150px; }
+
+.month{
+  position:absolute; top: 1040px; left: 120px; right: 120px;
+  font: 500 30px/1 Arial, sans-serif;
+  letter-spacing: 2px;
+  color:#a06a45;
+}
+
+/* Date row */
+.date-row{
+  position:absolute;
+  top: 1110px;
+  left: 130px;
+  right: 130px;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items:center;
+  font-family: Arial, sans-serif;
+  color:#a06a45;
+}
+
+.day-box, .mh-box{
+  border-top: 3px solid rgba(160,106,69,.7);
+  border-bottom: 3px solid rgba(160,106,69,.7);
+  padding: 16px 0;
+}
+
+.day{ font-size: 22px; letter-spacing: 2px; }
+
+.date-mid .num{ font-size: 82px; font-weight: 700; line-height: 1; }
+.date-mid .year{ font-size: 22px; margin-top: 6px; font-weight: 600; }
+
+.mh1{ font-size: 16px; font-weight: 700; }
+.mh2{ font-size: 22px; font-weight: 700; margin-top: 6px; }
+
+.venue{
+  position:absolute; top: 1270px; left: 140px; right: 140px;
+}
+.venue-big{
+  font: 700 38px/1.2 Arial, sans-serif;
+  color:#3b3b3b;
+}
+
+.reception{
+  position:absolute; top: 1385px; left: 160px; right: 160px;
+  color:#6a6a6a;
+}
+
+.footer{
+  position:absolute; bottom: 50px; left: 160px; right: 160px;
+  color:#6a6a6a;
+}
