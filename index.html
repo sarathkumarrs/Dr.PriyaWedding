@@ -2,83 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Wedding Invitation - Dr. Priya Raj & Sarath Kumar R S</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <main class="page">
-    <section class="card" aria-label="Wedding invitation">
-      <div class="bg" role="img" aria-label="Invitation background"></div>
-
-      <!-- scaled overlay -->
-      <div class="overlay" aria-hidden="false">
+  <div class="container">
+    <div class="card">
+      <!-- Background image -->
+      <div class="background"></div>
+      
+      <!-- Content -->
+      <div class="content">
+        
         <!-- Top hosts -->
-        <div class="top-hosts">
-          <div class="line title">P.C Rajappan(Late) &amp; MRS. Sheeja Rajappan</div>
-          <div class="line small">Puthuparambil, Manjakkala P.O, Panampatta</div>
-          <div class="line small">Mob : 9961413287, 9207100174</div>
+        <div class="section top-hosts">
+          <p class="title">P.C Rajappan (Late) & Mrs. Sheeja Rajappan</p>
+          <p class="small">Puthuparambil, Manjakkala P.O, Panampatta</p>
+          <p class="small">Mob: 9961413287, 9207100174</p>
         </div>
 
-        <div class="invite-text">
-          <div class="line tiny">with blessings from our elders and love from our families</div>
-          <div class="line tiny">we invite you to the sacred wedding ceremony of</div>
+        <!-- Invitation text -->
+        <div class="section invite-text">
+          <p class="tiny">with blessings from our elders and love from our families</p>
+          <p class="tiny">we invite you to the sacred wedding ceremony of</p>
         </div>
 
-        <div class="names">
-          <div class="groom">Dr. Priya Raj</div>
-          <div class="with">with</div>
-          <div class="bride">Sarath Kumar R S</div>
+        <!-- Couple names -->
+        <div class="section names">
+          <h1 class="groom">Dr. Priya Raj</h1>
+          <p class="with">with</p>
+          <h2 class="bride">Sarath Kumar R S</h2>
         </div>
 
-        <div class="bride-family">
-          <div class="line title2">S/O MR. Raju G. &amp; MRS. Salini B R</div>
-          <div class="line small">Kadampattu Veedu, Kottukkal P.O,</div>
-          <div class="line small">Anchal, Kollam - 691306</div>
+        <!-- Bride's family -->
+        <div class="section bride-family">
+          <p class="title2">S/O Mr. Raju G. & Mrs. Salini B R</p>
+          <p class="small">Kadampattu Veedu, Kottukkal P.O,</p>
+          <p class="small">Anchal, Kollam - 691306</p>
         </div>
 
-        <div class="date-band">
-          <div class="month">March</div>
-
-          <div class="date-row">
-            <div class="day">SUNDAY</div>
-
-            <div class="date">
-              <div class="num">15</div>
-              <div class="year">2026</div>
+        <!-- Date section -->
+        <div class="section date-section">
+          <p class="month">March</p>
+          
+          <div class="date-grid">
+            <div class="date-box day-box">
+              <p class="day-label">SUNDAY</p>
             </div>
-
-            <div class="muhurtham">
-              <div class="mh-title">MUHURTHAM:BETWEEN</div>
-              <div class="mh-time">12:07 PM &amp; 12:30 PM</div>
+            
+            <div class="date-center">
+              <p class="date-number">15</p>
+              <p class="year">2026</p>
+            </div>
+            
+            <div class="date-box muhurtham-box">
+              <p class="muhurtham-label">MUHURTHAM</p>
+              <p class="between">BETWEEN</p>
+              <p class="time">12:07 PM<br>&<br>12:30 PM</p>
             </div>
           </div>
         </div>
 
-        <div class="venue">
-          <div class="line venue-big">at Crown Convention Center</div>
-          <div class="line small">Kallumkadavu, Pathanapuram - 689695</div>
+        <!-- Venue -->
+        <div class="section venue">
+          <p class="venue-name">at Crown Convention Center</p>
+          <p class="venue-address">Kallumkadavu, Pathanapuram - 689695</p>
         </div>
 
-        <div class="reception">
-          <div class="line tiny">RECEPTION ON SATURDAY, 14TH MARCH 2026</div>
-          <div class="line tiny">FROM 4:00 PM ONWARDS</div>
-          <div class="line tiny">AT OUR RESIDENCE</div>
-          <div class="line tiny">PATHANAPURAM</div>
+        <!-- Reception -->
+        <div class="section reception">
+          <p class="tiny">RECEPTION ON SATURDAY, 14TH MARCH 2026</p>
+          <p class="tiny">FROM 4:00 PM ONWARDS</p>
+          <p class="tiny">AT OUR RESIDENCE, PATHANAPURAM</p>
         </div>
 
-        <div class="footer">
-          <div class="line tiny">TOGETHER WITH LOVE</div>
-          <div class="line tiny">RAHUL, CHIPPY, KANNAN</div>
-          <div class="line tiny">MICKY, KUNJU</div>
+        <!-- Footer -->
+        <div class="section footer">
+          <p class="tiny">TOGETHER WITH LOVE</p>
+          <p class="tiny">RAHUL, CHIPPY, KANNAN, MICKY, KUNJU</p>
         </div>
 
-        <!-- QR placeholders -->
-        <div class="qr qr-left" aria-hidden="true"></div>
-        <div class="qr qr-right" aria-hidden="true"></div>
+        <!-- QR codes -->
+        <div class="qr qr-left" aria-label="Location QR Code"></div>
+        <div class="qr qr-right" aria-label="RSVP QR Code"></div>
+        
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 </body>
 </html>
