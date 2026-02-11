@@ -12,6 +12,7 @@
 html {
   font-size: 16px;
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -25,23 +26,41 @@ body {
 }
 
 /* ===================================
-   CONTAINER
+   PAGE WRAPPER - ALLOWS SCROLLING
    =================================== */
-.container {
+.page-wrapper {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+}
+
+/* Mobile: make it scrollable */
+@media (max-width: 768px) {
+  .page-wrapper {
+    display: block;
+    padding: 1rem 0.75rem;
+    min-height: 100vh;
+  }
 }
 
 /* ===================================
-   CARD - MOBILE FIRST
+   CARD CONTAINER
+   =================================== */
+.card-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* ===================================
+   CARD - PROPER ASPECT RATIO
    =================================== */
 .card {
   position: relative;
   width: 100%;
-  max-width: 600px;
   aspect-ratio: 2 / 3;
   background: #ffffff;
   border-radius: 0.5rem;
@@ -51,32 +70,22 @@ body {
   overflow: hidden;
 }
 
-/* Tablet */
-@media (min-width: 768px) {
-  .container {
-    padding: 1.5rem;
-  }
-  
+/* Mobile: ensure card fits in viewport */
+@media (max-width: 768px) {
   .card {
-    max-width: 700px;
+    /* Let height be determined by aspect ratio */
+    width: 100%;
+    min-height: auto;
+    border-radius: 0.375rem;
   }
 }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  .container {
-    padding: 2rem;
-  }
-  
+@media (max-width: 480px) {
   .card {
-    max-width: 820px;
-  }
-}
-
-/* Large Desktop */
-@media (min-width: 1280px) {
-  .card {
-    max-width: 1024px;
+    border-radius: 0.25rem;
+    box-shadow: 
+      0 0.75rem 2rem rgba(0, 0, 0, 0.12),
+      0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -101,9 +110,21 @@ body {
   width: 100%;
   height: 100%;
   z-index: 1;
-  padding: 8% 10%;
+  padding: 6.5% 9%;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 7% 8%;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 7.5% 7%;
+  }
 }
 
 /* ===================================
@@ -112,40 +133,39 @@ body {
 .section {
   width: 100%;
   text-align: center;
-  margin-bottom: 3%;
 }
 
 /* ===================================
    TYPOGRAPHY
    =================================== */
-p {
+p, h1, h2 {
   margin: 0;
   padding: 0;
 }
 
 .title {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.7rem, 1.8vw, 1rem);
+  font-size: clamp(0.65rem, 1.6vw, 1rem);
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   line-height: 1.5;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.25em;
 }
 
 .title2 {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.65rem, 1.6vw, 0.95rem);
+  font-size: clamp(0.6rem, 1.5vw, 0.95rem);
   font-weight: 500;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.5;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.25em;
 }
 
 .small {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  font-size: clamp(0.575rem, 1.4vw, 0.875rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   line-height: 1.6;
@@ -154,9 +174,9 @@ p {
 
 .tiny {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.55rem, 1.3vw, 0.8rem);
+  font-size: clamp(0.5rem, 1.25vw, 0.8rem);
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   line-height: 1.7;
   margin: 0.2em 0;
@@ -167,15 +187,14 @@ p {
    TOP HOSTS SECTION
    =================================== */
 .top-hosts {
-  margin-top: 2%;
+  margin-bottom: 2.5%;
 }
 
 /* ===================================
    INVITATION TEXT
    =================================== */
 .invite-text {
-  margin-top: 1%;
-  margin-bottom: 2%;
+  margin-bottom: 2.5%;
 }
 
 .invite-text .tiny {
@@ -186,7 +205,7 @@ p {
    COUPLE NAMES
    =================================== */
 .names {
-  margin: 3% 0 4% 0;
+  margin: 2.5% 0 3% 0;
 }
 
 .groom,
@@ -199,13 +218,13 @@ p {
 }
 
 .groom {
-  font-size: clamp(2rem, 6vw, 3.9rem);
-  margin-bottom: 0.3em;
+  font-size: clamp(1.85rem, 5.8vw, 3.75rem);
+  margin-bottom: 0.35em;
 }
 
 .with {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 2.7vw, 1.7rem);
+  font-size: clamp(0.95rem, 2.5vw, 1.625rem);
   font-style: italic;
   font-weight: 400;
   margin: 0.5em 0;
@@ -213,38 +232,38 @@ p {
 }
 
 .bride {
-  font-size: clamp(2.2rem, 6.5vw, 4.3rem);
-  margin-top: 0.3em;
+  font-size: clamp(2rem, 6.2vw, 4.25rem);
+  margin-top: 0.35em;
 }
 
 /* ===================================
    BRIDE'S FAMILY
    =================================== */
 .bride-family {
-  margin: 3% 0;
+  margin: 3% 0 3.5% 0;
 }
 
 /* ===================================
    DATE SECTION
    =================================== */
 .date-section {
-  margin: 4% 0;
+  margin: 3.5% 0;
   color: #a06a45;
 }
 
 .month {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.9rem, 2.3vw, 1.5rem);
+  font-size: clamp(0.85rem, 2.2vw, 1.45rem);
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-bottom: 1em;
+  margin-bottom: 0.85em;
 }
 
 .date-grid {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
+  gap: clamp(0.5rem, 1.8vw, 1.4rem);
   align-items: center;
   width: 100%;
 }
@@ -252,30 +271,30 @@ p {
 .date-box {
   border-top: 0.15rem solid rgba(160, 106, 69, 0.7);
   border-bottom: 0.15rem solid rgba(160, 106, 69, 0.7);
-  padding: clamp(0.6rem, 1.8vw, 1.1rem) clamp(0.3rem, 1vw, 0.7rem);
+  padding: clamp(0.55rem, 1.7vw, 1rem) clamp(0.3rem, 0.9vw, 0.65rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: clamp(3rem, 8vw, 5rem);
+  min-height: clamp(2.75rem, 7.5vw, 4.75rem);
 }
 
 .day-label {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.75rem, 2vw, 1.2rem);
+  font-size: clamp(0.7rem, 1.9vw, 1.2rem);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
 }
 
 .date-center {
   text-align: center;
-  padding: 0 clamp(0.5rem, 2vw, 1rem);
-  line-height: 0.9;
+  padding: 0 clamp(0.45rem, 1.8vw, 1rem);
+  line-height: 0.88;
 }
 
 .date-number {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(3rem, 8vw, 5.2rem);
+  font-size: clamp(2.75rem, 7.5vw, 5.125rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -283,32 +302,32 @@ p {
 
 .year {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.8rem, 2vw, 1.3rem);
+  font-size: clamp(0.75rem, 1.9vw, 1.25rem);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
   margin-top: 0.3em;
 }
 
 .muhurtham-label {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.6rem, 1.5vw, 0.85rem);
+  font-size: clamp(0.575rem, 1.45vw, 0.85rem);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
   line-height: 1.2;
 }
 
 .between {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.5rem, 1.2vw, 0.7rem);
+  font-size: clamp(0.475rem, 1.15vw, 0.7rem);
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   margin: 0.2em 0;
   line-height: 1.2;
 }
 
 .time {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.7rem, 1.8vw, 1.1rem);
+  font-size: clamp(0.65rem, 1.7vw, 1.075rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   margin-top: 0.3em;
@@ -319,22 +338,22 @@ p {
    VENUE
    =================================== */
 .venue {
-  margin: 4% 0 3% 0;
+  margin: 3.5% 0 3% 0;
 }
 
 .venue-name {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 3.8vw, 2.4rem);
+  font-size: clamp(1.2rem, 3.6vw, 2.3rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   line-height: 1.3;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.35em;
   color: #2c2c2c;
 }
 
 .venue-address {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  font-size: clamp(0.575rem, 1.4vw, 0.875rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   line-height: 1.5;
@@ -345,7 +364,7 @@ p {
    RECEPTION
    =================================== */
 .reception {
-  margin: 3% 0 2% 0;
+  margin: 3% 0 2.5% 0;
 }
 
 .reception .tiny {
@@ -357,9 +376,7 @@ p {
    FOOTER
    =================================== */
 .footer {
-  margin-top: auto;
-  margin-bottom: 2%;
-  padding-bottom: 1%;
+  margin: 2.5% 0 1.5% 0;
 }
 
 .footer .tiny {
@@ -368,17 +385,27 @@ p {
 }
 
 /* ===================================
-   QR CODES
+   QR CODES CONTAINER
    =================================== */
+.qr-container {
+  position: relative;
+  width: 100%;
+  height: clamp(4rem, 11vw, 7.5rem);
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 2%;
+}
+
 .qr {
-  position: absolute;
-  bottom: 1.5%;
-  width: clamp(3.5rem, 10vw, 7rem);
-  height: clamp(3.5rem, 10vw, 7rem);
+  width: clamp(3.25rem, 9.5vw, 6.5rem);
+  height: clamp(3.25rem, 9.5vw, 6.5rem);
   background: rgba(160, 106, 69, 0.06);
   border: 0.125rem solid rgba(160, 106, 69, 0.12);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .qr:hover {
@@ -387,46 +414,22 @@ p {
   transform: scale(1.03);
 }
 
-.qr-left {
-  left: 3%;
-}
-
-.qr-right {
-  right: 3%;
-}
-
 /* ===================================
    MOBILE ADJUSTMENTS
    =================================== */
 @media (max-width: 480px) {
-  .container {
-    padding: 0.75rem;
+  .page-wrapper {
+    padding: 0.75rem 0.5rem;
   }
   
-  .content {
-    padding: 8% 8%;
-  }
-  
-  .qr {
-    bottom: 2%;
-  }
-  
-  .qr-left {
-    left: 4%;
-  }
-  
-  .qr-right {
-    right: 4%;
+  .qr-container {
+    padding: 0 3%;
   }
 }
 
 @media (max-width: 360px) {
-  .container {
-    padding: 0.5rem;
-  }
-  
-  .content {
-    padding: 7% 7%;
+  .page-wrapper {
+    padding: 0.5rem 0.375rem;
   }
 }
 
@@ -434,13 +437,8 @@ p {
    LANDSCAPE MOBILE
    =================================== */
 @media (max-width: 900px) and (orientation: landscape) {
-  .container {
-    padding: 0.5rem;
-    align-items: flex-start;
-  }
-  
-  .card {
-    margin: 0.5rem auto;
+  .page-wrapper {
+    padding: 0.75rem;
   }
 }
 
@@ -452,7 +450,7 @@ p {
     background: white;
   }
   
-  .container {
+  .page-wrapper {
     padding: 0;
     min-height: auto;
   }
@@ -480,4 +478,21 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ===================================
+   SMOOTH SCROLLING
+   =================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   WEBKIT OPTIMIZATIONS
+   =================================== */
+.card {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
