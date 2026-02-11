@@ -1,0 +1,224 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: #f4f4f4;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.page {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* Keep original invitation ratio */
+.card {
+  width: min(1024px, 100vw - 32px);
+  aspect-ratio: 2 / 3;              /* 1024x1536 */
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18);
+}
+
+/* Use the same background (flowers etc.) */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("invite.png"); /* your original invitation image */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay container */
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  color: #3b3b3b;
+}
+
+/* Utility text sizes */
+.line { text-align: center; }
+.small { font-size: clamp(10px, 1.2vw, 14px); letter-spacing: .6px; }
+.tiny  { font-size: clamp(9px, 1.05vw, 12px); letter-spacing: 1px; }
+.title { font-size: clamp(12px, 1.4vw, 16px); letter-spacing: 2px; font-family: "Arial", sans-serif; }
+.title2 { font-size: clamp(11px, 1.3vw, 15px); letter-spacing: 2px; font-family: "Arial", sans-serif; }
+
+/* Position blocks (tuned to your layout) */
+.top-hosts {
+  position: absolute;
+  top: 22%;
+  left: 8%;
+  right: 8%;
+  line-height: 1.5;
+}
+
+.invite-text {
+  position: absolute;
+  top: 31%;
+  left: 10%;
+  right: 10%;
+  line-height: 1.7;
+}
+
+/* Script-style names */
+.names {
+  position: absolute;
+  top: 38%;
+  left: 8%;
+  right: 8%;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.groom, .bride {
+  font-family: "Brush Script MT", "Segoe Script", "Lucida Handwriting", cursive;
+  color: #a06a45; /* copper-brown */
+  font-weight: 500;
+}
+
+.groom {
+  font-size: clamp(28px, 4.2vw, 54px);
+}
+.with {
+  margin: 10px 0;
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: clamp(14px, 1.7vw, 22px);
+  color: #3b3b3b;
+}
+.bride {
+  font-size: clamp(30px, 4.4vw, 58px);
+}
+
+.bride-family {
+  position: absolute;
+  top: 52%;
+  left: 10%;
+  right: 10%;
+  line-height: 1.6;
+}
+
+/* Date band */
+.date-band {
+  position: absolute;
+  top: 66%;
+  left: 10%;
+  right: 10%;
+  color: #a06a45;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 2px;
+}
+
+.month {
+  font-size: clamp(14px, 1.8vw, 20px);
+  margin-bottom: 10px;
+}
+
+.date-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(10px, 2vw, 26px);
+}
+
+.day {
+  justify-self: start;
+  border-top: 2px solid rgba(160,106,69,.75);
+  border-bottom: 2px solid rgba(160,106,69,.75);
+  padding: 10px 0;
+  width: 100%;
+  font-size: clamp(12px, 1.6vw, 18px);
+}
+
+.date {
+  justify-self: center;
+  line-height: 1;
+}
+
+.num {
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.year {
+  margin-top: 6px;
+  font-size: clamp(12px, 1.6vw, 18px);
+  font-weight: 600;
+}
+
+.muhurtham {
+  justify-self: end;
+  border-top: 2px solid rgba(160,106,69,.75);
+  border-bottom: 2px solid rgba(160,106,69,.75);
+  padding: 10px 0;
+  width: 100%;
+}
+
+.mh-title {
+  font-size: clamp(10px, 1.2vw, 14px);
+  font-weight: 700;
+}
+.mh-time {
+  font-size: clamp(12px, 1.5vw, 18px);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Venue */
+.venue {
+  position: absolute;
+  top: 77%;
+  left: 10%;
+  right: 10%;
+  line-height: 1.5;
+  color: #3b3b3b;
+}
+.venue-big {
+  font-family: "Arial", sans-serif;
+  font-size: clamp(18px, 2.3vw, 30px);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Reception */
+.reception {
+  position: absolute;
+  top: 84%;
+  left: 12%;
+  right: 12%;
+  line-height: 1.6;
+  color: #6a6a6a;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 4%;
+  left: 12%;
+  right: 12%;
+  line-height: 1.6;
+  color: #6a6a6a;
+}
+
+/* QR placeholders (replace background-image with actual QR if needed) */
+.qr {
+  position: absolute;
+  width: clamp(70px, 10vw, 120px);
+  aspect-ratio: 1 / 1;
+  bottom: 18%;
+  background: rgba(0,0,0,0.08);
+  border-radius: 6px;
+}
+.qr-left { left: 10%; }
+.qr-right { right: 10%; }
+
+@media print {
+  body { background: #fff; }
+  .page { padding: 0; }
+  .card { width: 1024px; box-shadow: none; }
+}
